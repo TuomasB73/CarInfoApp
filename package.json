@@ -1,0 +1,23 @@
+{
+  "name": "carinfoapp",
+  "version": "1.0.0",
+  "description": "Server application with GraphQL API for the Car Info App",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuomasB73/CarInfoApp.git"
+  },
+  "author": "Tuomas Bergholm",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/TuomasB73/CarInfoApp/issues"
+  },
+  "homepage": "https://github.com/TuomasB73/CarInfoApp#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
