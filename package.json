@@ -18,6 +18,17 @@
   },
   "homepage": "https://github.com/TuomasB73/CarInfoApp#readme",
   "dependencies": {
-    "esm": "^3.2.25"
+    "apollo-server-express": "^3.6.7",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.0",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   }
 }
