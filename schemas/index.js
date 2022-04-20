@@ -1,4 +1,8 @@
 import { gql } from 'apollo-server-express';
+import brandSchema from './brandSchema';
+import carSchema from './carSchema';
+import fullModelNameSchema from './fullModelNameSchema';
+import modelSchema from './modelSchema';
 import userSchema from './userSchema';
 
 const linkSchema = gql`
@@ -10,4 +14,11 @@ const linkSchema = gql`
   }
 `;
 
-export default [linkSchema, userSchema];
+export default [
+  linkSchema,
+  brandSchema,
+  carSchema,
+  fullModelNameSchema,
+  modelSchema,
+  userSchema,
+];
