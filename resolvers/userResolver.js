@@ -4,18 +4,12 @@ import { login } from '../utils/auth';
 
 export default {
   Query: {
-    user: async (parent, args, { user }, context) => {
-      console.log(context);
-      // authorization
-      if (!context.user) {
-        throw new AuthenticationError('Not authorized');
-      }
-      console.log('userResolver', user);
+    user: async (parent, args) => {
       // find user by id
       return await User.findById(args.id);
     },
     login: async (parent, args, { req }) => {
-      // get username and passport from query and add to req for passport
+      // get username and password from query and add to req.body for passport
       req.body = args;
       return await login(req);
     },
