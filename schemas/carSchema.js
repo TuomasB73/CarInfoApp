@@ -4,7 +4,7 @@ export default gql`
   extend type Query {
     getAllCars: [Car]
     getCarById(id: ID!): Car
-    getCarByFullModelName(fullModelName: ID!): Car
+    getCarByFullModelName(fullModelName: String!): Car
   }
 
   extend type Mutation {
@@ -12,34 +12,24 @@ export default gql`
       brand: String!
       model: String!
       year: Int!
-      bodyStyle: [String]
-      numberOfDoors: [Int]
-      fuelType: [String]
-      engineDisplacement: [String]
-      power: String
-      drivetrain: [String]
-      transmission: [String]
-      acceleration0_100Kmh: String
-      fuelConsumption: String
-      co2Emissions: String
+      bodyStyles: [String]
+      numbersOfDoors: [Int]
+      drivetrains: [String]
+      variants: [VariantInput]
+      defaultImageFilename: String
     ): Car
   }
 
   type Car {
     id: ID
+    fullModelName: FullModelName
     brand: Brand
     model: Model
     year: Int
-    fullModelName: FullModelName
-    bodyStyle: [String]
-    numberOfDoors: [Int]
-    fuelType: [String]
-    engineDisplacement: [String]
-    power: String
-    drivetrain: [String]
-    transmission: [String]
-    acceleration0_100Kmh: String
-    fuelConsumption: String
-    co2Emissions: String
+    bodyStyles: [String]
+    numbersOfDoors: [Int]
+    drivetrains: [String]
+    variants: [Variant]
+    defaultImageFilename: String
   }
 `;

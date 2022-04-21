@@ -3,15 +3,15 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const car = new Schema({
-  brand: { type: mongoose.Types.ObjectId, required: true, ref: 'Brand' },
-  model: { type: mongoose.Types.ObjectId, required: true, ref: 'Model' },
-  year: { type: Number, required: true, min: 1000, max: 9999 },
   fullModelName: {
     type: mongoose.Types.ObjectId,
     required: true,
     ref: 'FullModelName',
   },
-  bodyStyle: [
+  brand: { type: mongoose.Types.ObjectId, required: true, ref: 'Brand' },
+  model: { type: mongoose.Types.ObjectId, required: true, ref: 'Model' },
+  year: { type: Number, required: true, min: 1000, max: 9999 },
+  bodyStyles: [
     {
       type: String,
       enum: [
@@ -27,24 +27,8 @@ const car = new Schema({
       ],
     },
   ],
-  numberOfDoors: [{ type: Number, min: 1, max: 5 }],
-  fuelType: [
-    {
-      type: String,
-      enum: [
-        'gasoline',
-        'diesel',
-        'hybrid',
-        'plug-in hybrid',
-        'electric',
-        'hydrogen',
-        'ethanol',
-      ],
-    },
-  ],
-  engineDisplacement: [String],
-  power: String,
-  drivetrain: [
+  numbersOfDoors: [{ type: Number, min: 1, max: 5 }],
+  drivetrains: [
     {
       type: String,
       enum: [
@@ -55,10 +39,8 @@ const car = new Schema({
       ],
     },
   ],
-  transmission: [String],
-  acceleration0_100Kmh: String,
-  fuelConsumption: String,
-  co2Emissions: String,
+  variants: [{ type: mongoose.Types.ObjectId, ref: 'Variant' }],
+  defaultImageFilename: { type: String, unique: true },
 });
 
 export default mongoose.model('Car', car);
