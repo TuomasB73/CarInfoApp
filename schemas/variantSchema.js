@@ -13,6 +13,7 @@ export default gql`
   }
 
   input VariantInput {
+    id: ID
     fuelType: String
     engineDisplacement: String
     transmission: String
