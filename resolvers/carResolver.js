@@ -5,6 +5,18 @@ import Brand from '../models/brand';
 import Variant from '../models/variant';
 
 export default {
+  Review: {
+    async car(parent, args) {
+      console.log('car', parent);
+      return await Car.findById(parent.car);
+    },
+  },
+  Picture: {
+    async car(parent, args) {
+      console.log('car', parent);
+      return await Car.findById(parent.car);
+    },
+  },
   Query: {
     getAllCars: async (parent, args) => {
       let filters = {};
@@ -65,9 +77,7 @@ export default {
       const variantIds = [];
       const variants = args.variants;
       variants.forEach(async (variant) => {
-        const variantProperties = variant;
-        delete variantProperties.id;
-        const newVariant = new Variant(variantProperties);
+        const newVariant = new Variant(variant);
         newVariant.save();
         const variantId = newVariant.id;
         variantIds.push(variantId);
