@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    getAllCars: [Car]
+    getAllCars(brand: String, model: String, year: Int): [Car]
     getCarById(id: ID!): Car
     getCarByFullModelName(fullModelName: String!): Car
   }
@@ -18,13 +18,25 @@ export default gql`
       variants: [VariantInput]
       defaultImageFilename: String
     ): Car
+
+    modifyCar(
+      id: ID
+      brand: String
+      model: String
+      year: Int
+      bodyStyles: [String]
+      numbersOfDoors: [Int]
+      drivetrains: [String]
+      variants: [VariantInput]
+      defaultImageFilename: String
+    ): Car
   }
 
   type Car {
     id: ID
     fullModelName: FullModelName
     brand: Brand
-    model: Model
+    model: String
     year: Int
     bodyStyles: [String]
     numbersOfDoors: [Int]

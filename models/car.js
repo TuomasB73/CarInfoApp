@@ -9,7 +9,7 @@ const car = new Schema({
     ref: 'FullModelName',
   },
   brand: { type: mongoose.Types.ObjectId, required: true, ref: 'Brand' },
-  model: { type: mongoose.Types.ObjectId, required: true, ref: 'Model' },
+  model: { type: String, required: true },
   year: { type: Number, required: true, min: 1000, max: 9999 },
   bodyStyles: [
     {
