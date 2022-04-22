@@ -3,6 +3,18 @@ import User from '../models/user';
 import { login } from '../utils/auth';
 
 export default {
+  Review: {
+    async user(parent, args) {
+      console.log('user', parent);
+      return await User.findById(parent.user);
+    },
+  },
+  Picture: {
+    async user(parent, args) {
+      console.log('user', parent);
+      return await User.findById(parent.user);
+    },
+  },
   Query: {
     user: async (parent, args) => {
       // find user by id
