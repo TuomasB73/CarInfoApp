@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 import brandSchema from './brandSchema';
 import carSchema from './carSchema';
 import fullModelNameSchema from './fullModelNameSchema';
+import likeSchema from './likeSchema';
 import pictureSchema from './pictureSchema';
 import reviewSchema from './reviewSchema';
 import userSchema from './userSchema';
@@ -21,6 +22,7 @@ export default [
   brandSchema,
   carSchema,
   fullModelNameSchema,
+  likeSchema,
   pictureSchema,
   reviewSchema,
   userSchema,
