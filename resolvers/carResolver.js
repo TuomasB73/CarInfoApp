@@ -133,7 +133,7 @@ export default {
           brandId = newBrand.id;
         }
       }
-      // check for each variant to be updated/added if there is id variable in them. If there is, it's an existing variant
+      // check for each variant to be updated/added if there is id property in them. If there is, it's an existing variant
       // which will be updated. If there is not, a new variant will be created. All the variant IDs will be added to the array
       const updatedVariantIds = await Promise.all(
         args.variants.map(async (variant) => {

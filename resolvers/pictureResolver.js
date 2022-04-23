@@ -2,9 +2,15 @@ import { AuthenticationError } from 'apollo-server-express';
 import Picture from '../models/picture';
 
 export default {
+  Like: {
+    async picture(parent, args) {
+      console.log('picture', parent);
+      return await Picture.findById(parent.picture);
+    },
+  },
   Query: {
     getAllPicturesByCarId: async (parent, args) => {
-      return await Picture.find({ car: args.car });
+      return await Picture.find(args);
     },
     getPictureById: async (parent, args) => {
       return await Picture.findById(args.id);

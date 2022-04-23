@@ -4,7 +4,7 @@ import Review from '../models/review';
 export default {
   Query: {
     getAllReviewsByCarId: async (parent, args) => {
-      return await Review.find({ car: args.car });
+      return await Review.find(args);
     },
     getReviewById: async (parent, args) => {
       return await Review.findById(args.id);

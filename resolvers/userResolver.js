@@ -15,6 +15,12 @@ export default {
       return await User.findById(parent.user);
     },
   },
+  Like: {
+    async user(parent, args) {
+      console.log('user', parent);
+      return await User.findById(parent.user);
+    },
+  },
   Query: {
     user: async (parent, args) => {
       // find user by id
