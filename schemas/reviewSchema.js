@@ -7,7 +7,9 @@ export default gql`
   }
 
   extend type Mutation {
-    addReview(car: ID!, user: ID!, text: String!): Review
+    addReview(car: ID!, text: String!): Review
+    modifyMyReview(id: ID!, text: String!): Review
+    deleteMyReview(id: ID!): Review
   }
 
   type Review {

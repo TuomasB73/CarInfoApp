@@ -23,8 +23,28 @@ export default {
       if (!context.user) {
         throw new AuthenticationError('Not authorized');
       }
-      const newPicture = new Picture(args);
+      const newPicture = new Picture({ ...args, user: context.user._id });
       return newPicture.save();
+    },
+    modifyMyPicture: async (parent, args, context) => {
+      console.log(context);
+      // authorization
+      if (!context.user) {
+        throw new AuthenticationError('Not authorized');
+      }
+      return await Picture.findOneAndUpdate(
+        { _id: args.id, user: context.user._id },
+        args,
+        { new: true }
+      );
+    },
+    deleteMyPicture: async (parent, args, context) => {
+      console.log(context);
+      // authorization
+      if (!context.user) {
+        throw new AuthenticationError('Not authorized');
+      }
+      return await Picture.deleteOne({ _id: args.id, user: context.user._id });
     },
   },
 };

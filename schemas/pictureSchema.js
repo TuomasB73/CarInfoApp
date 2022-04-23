@@ -7,12 +7,9 @@ export default gql`
   }
 
   extend type Mutation {
-    addPicture(
-      car: ID!
-      user: ID!
-      imageFilename: String!
-      text: String
-    ): Picture
+    addPicture(car: ID!, imageFilename: String!, text: String): Picture
+    modifyMyPicture(id: ID!, text: String): Picture
+    deleteMyPicture(id: ID!): Picture
   }
 
   type Picture {

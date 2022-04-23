@@ -6,8 +6,13 @@ export default {
     getAllLikesByPictureId: async (parent, args) => {
       return await Like.find(args);
     },
-    getLikeByPictureAndUserIds: async (parent, args) => {
-      return await Like.findOne(args);
+    getAllMyLikes: async (parent, args) => {
+      console.log(context);
+      // authorization
+      if (!context.user) {
+        throw new AuthenticationError('Not authorized');
+      }
+      return await Like.find({ user: context.user._id });
     },
   },
   Mutation: {
@@ -17,24 +22,23 @@ export default {
       if (!context.user) {
         throw new AuthenticationError('Not authorized');
       }
-      const existingLike = await Like.findOne(args);
+      const existingLike = await Like.findOne({
+        ...args,
+        user: context.user._id,
+      });
       if (existingLike != null) {
-        throw new Error('This user has already liked this picture');
+        throw new Error('You have already liked this picture');
       }
-      const newLike = new Like(args);
+      const newLike = new Like({ ...args, user: context.user._id });
       return newLike.save();
     },
-    deleteLike: async (parent, args, context) => {
+    deleteMyLike: async (parent, args, context) => {
       console.log(context);
       // authorization
       if (!context.user) {
         throw new AuthenticationError('Not authorized');
       }
-      const existingLike = await Like.findOne(args);
-      if (existingLike == null) {
-        throw new Error('This like does not exist');
-      }
-      return await Like.deleteOne(args);
+      return await Like.deleteOne({ ...args, user: context.user._id });
     },
   },
 };
