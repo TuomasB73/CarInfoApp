@@ -1,3 +1,4 @@
+import { AuthenticationError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import User from '../models/user';
 import { login } from '../utils/auth';
@@ -26,10 +27,26 @@ export default {
       // find user by id
       return await User.findById(args.id);
     },
+    getMyUser: async (parent, args, context) => {
+      console.log(context);
+      // authorization
+      if (!context.user) {
+        throw new AuthenticationError('Not authorized');
+      }
+      return { ...context.user, id: context.user._id };
+    },
     login: async (parent, args, { req }) => {
       // get username and password from query and add to req.body for passport
       req.body = args;
       return await login(req);
+    },
+    checkIsUsernameAvailable: async (parent, args) => {
+      const existingUser = await User.findOne(args);
+      return existingUser == null ? true : false;
+    },
+    checkIsNicknameAvailable: async (parent, args) => {
+      const existingUser = await User.findOne(args);
+      return existingUser == null ? true : false;
     },
   },
   Mutation: {
