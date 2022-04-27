@@ -22,7 +22,7 @@ export default {
     },
   },
   Query: {
-    user: async (parent, args) => {
+    getUserById: async (parent, args) => {
       // find user by id
       return await User.findById(args.id);
     },
