@@ -2,12 +2,12 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    user(id: ID!): FetchedUser
+    getUserById(id: ID!): FetchedUser
     login(username: String!, password: String!): User
   }
 
   extend type Mutation {
-    registerUser(username: String!, password: String!, nickname: String): User
+    registerUser(username: String!, nickname: String!, password: String!): User
   }
 
   type User {
