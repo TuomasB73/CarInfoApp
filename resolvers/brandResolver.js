@@ -7,4 +7,9 @@ export default {
       return await Brand.findById(parent.brand);
     },
   },
+  Query: {
+    getAllBrands: async (parent, args) => {
+      return await Brand.find();
+    },
+  },
 };
