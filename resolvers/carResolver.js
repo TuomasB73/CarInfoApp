@@ -50,7 +50,7 @@ export default {
         name: fullModelName,
       });
       // throw an error if the specific car model already exists
-      if (existingFullModelName != null) {
+      if (existingFullModelName) {
         throw new Error('This car model already exists in the database');
       }
       // if the specific car model doesn't exist yet, it will be created
@@ -61,7 +61,7 @@ export default {
       // check if the car model's brand already exists, if yes, use that id, if not, create it
       let brandId;
       const existingBrand = await Brand.findOne({ name: args.brand });
-      if (existingBrand != null) {
+      if (existingBrand) {
         brandId = existingBrand.id;
       } else {
         const newBrand = new Brand({ name: args.brand });
@@ -104,7 +104,7 @@ export default {
           name: fullModelNameString,
         });
         // throw an error if the specific car model already exists
-        if (existingFullModelName != null) {
+        if (existingFullModelName) {
           throw new Error('This car model already exists in the database');
         }
         // if the specific car model doesn't exist yet, the current full model name will be updated
@@ -120,7 +120,7 @@ export default {
       let brandId;
       if (originalBrand.name !== args.brand) {
         const existingBrand = await Brand.findOne({ name: args.brand });
-        if (existingBrand != null) {
+        if (existingBrand) {
           brandId = existingBrand.id;
         } else {
           const newBrand = new Brand({ name: args.brand });
