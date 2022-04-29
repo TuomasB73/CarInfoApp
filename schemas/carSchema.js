@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    getAllCars(brand: String, model: String, year: Int): [Car]
+    getAllCars(brand: ID): [Car]
     getCarById(id: ID!): Car
     getCarByFullModelName(fullModelName: String!): Car
   }

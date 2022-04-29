@@ -20,12 +20,7 @@ export default {
   Query: {
     getAllCars: async (parent, args) => {
       let filters = {};
-      if (args.brand) {
-        const brand = await Brand.findOne({ name: args.brand });
-        filters.brand = brand != null ? brand.id : null;
-      }
-      if (args.model) filters.model = args.model;
-      if (args.year) filters.year = args.year;
+      if (args.brand) filters.brand = args.brand;
       return await Car.find(filters);
     },
     getCarById: async (parent, args) => {
