@@ -26,7 +26,7 @@ export default {
         ...args,
         user: context.user._id,
       });
-      if (existingLike != null) {
+      if (existingLike) {
         throw new Error('You have already liked this picture');
       }
       const newLike = new Like({ ...args, user: context.user._id });
