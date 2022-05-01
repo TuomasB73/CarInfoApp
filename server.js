@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import connectMongo from './db/db';
 import { checkAuth } from './utils/auth';
 import helmet from 'helmet';
+import passport from './utils/pass';
 import multer from 'multer';
 const upload = multer({ dest: './uploads/' });
 const port = process.env.PORT || 3000;
@@ -33,6 +34,8 @@ dotenv.config();
 
     const app = express();
 
+    app.use(passport.initialize());
+
     app.use(
       helmet({
         ieNoOpen: false,
@@ -41,10 +44,17 @@ dotenv.config();
       })
     );
 
-    app.post('/image-upload', upload.single('image'), (req, res) => {
-      const imageFilename = req.file.filename;
-      res.json(imageFilename);
-    });
+    app.use('/uploads', express.static('uploads'));
+
+    app.post(
+      '/image-upload',
+      passport.authenticate('jwt', { session: false }),
+      upload.single('image'),
+      (req, res) => {
+        const imageFilename = req.file.filename;
+        res.json(imageFilename);
+      }
+    );
 
     await server.start();
 
