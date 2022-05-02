@@ -40,7 +40,7 @@ const car = new Schema({
     },
   ],
   variants: [{ type: mongoose.Types.ObjectId, ref: 'Variant' }],
-  defaultImageFilename: { type: String, unique: true },
+  defaultImageFilename: String,
 });
 
 export default mongoose.model('Car', car);
