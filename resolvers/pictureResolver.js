@@ -9,6 +9,9 @@ export default {
     },
   },
   Query: {
+    getAllPictures: async (parent, args) => {
+      return await Picture.find();
+    },
     getAllPicturesByCarId: async (parent, args) => {
       return await Picture.find(args);
     },
