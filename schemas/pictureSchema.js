@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
+    getAllPictures: [Picture]
     getAllPicturesByCarId(car: ID!): [Picture]
     getPictureById(id: ID!): Picture
   }
