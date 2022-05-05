@@ -44,8 +44,10 @@ dotenv.config();
       })
     );
 
+    // Serve static uploads folder content
     app.use('/uploads', express.static('uploads'));
 
+    // REST POST endpoint for uploading images
     app.post(
       '/image-upload',
       passport.authenticate('jwt', { session: false }),
