@@ -1,7 +1,6 @@
 # Car Info App Backend
 
-Node.js Express server with a GraphQL API which uses MongoDB.
-Provides user login/register, fetching and posting car models with various info, as well as pictures and reviews.
+Node.js Express server with a GraphQL API which uses MongoDB. Provides user login/register, fetching and posting car models with various info, as well as pictures and reviews.
 
 ## Example queries/mutations
 
@@ -157,8 +156,7 @@ query Query {
 
 ### Add a car
 
-Provide at least brand, model and year in the variables.
-Requires authentication token.
+Provide at least brand, model and year in the variables. Requires authentication token.
 
 ```
 mutation Mutation($brand: String!, $model: String!, $year: Int!, $bodyStyles: [String], $numbersOfDoors: [Int], $drivetrains: [String], $variants: [VariantInput], $defaultImageFilename: String) {
@@ -194,8 +192,7 @@ mutation Mutation($brand: String!, $model: String!, $year: Int!, $bodyStyles: [S
 
 ### Modify a car
 
-Provide car ID and any properties you want to modify in the variables.
-Requires authentication token.
+Provide car ID and any properties you want to modify in the variables. Requires authentication token.
 
 ```
 mutation Mutation($modifyCarId: ID, $brand: String, $model: String, $year: Int, $bodyStyles: [String], $numbersOfDoors: [Int], $drivetrains: [String], $variants: [VariantInput], $defaultImageFilename: String) {
@@ -231,8 +228,7 @@ mutation Mutation($modifyCarId: ID, $brand: String, $model: String, $year: Int, 
 
 ### Add a review
 
-Provide car ID and text in the variables.
-Requires authentication token.
+Provide car ID and text in the variables. Requires authentication token.
 
 ```
 mutation Mutation($car: ID!, $text: String!) {
@@ -252,8 +248,7 @@ mutation Mutation($car: ID!, $text: String!) {
 
 ### Add a picture
 
-Provide car ID, image filename and text in the variables.
-Requires authentication token.
+Provide car ID, image filename and text in the variables. Requires authentication token.
 
 ```
 mutation Mutation($car: ID!, $imageFilename: String!, $text: String) {
@@ -274,8 +269,7 @@ mutation Mutation($car: ID!, $imageFilename: String!, $text: String) {
 
 ### Add a like
 
-Provide picture ID in the variables.
-Requires authentication token.
+Provide picture ID in the variables. Requires authentication token.
 
 ```
 mutation Mutation($picture: ID!) {
@@ -299,8 +293,7 @@ mutation Mutation($picture: ID!) {
 
 ### Delete a review
 
-Provide review ID in the variables.
-Requires authentication token.
+Provide review ID in the variables. Requires authentication token.
 
 ```
 mutation Mutation($deleteMyReviewId: ID!) {
@@ -312,8 +305,7 @@ mutation Mutation($deleteMyReviewId: ID!) {
 
 ### Delete a picture
 
-Provide picture ID in the variables.
-Requires authentication token.
+Provide picture ID in the variables. Requires authentication token.
 
 ```
 mutation Mutation($deleteMyPictureId: ID!) {
@@ -325,8 +317,7 @@ mutation Mutation($deleteMyPictureId: ID!) {
 
 ### Delete a like
 
-Provide picture ID in the variables.
-Requires authentication token.
+Provide picture ID in the variables. Requires authentication token.
 
 ```
 mutation Mutation($picture: ID!) {
